@@ -1,0 +1,245 @@
+.image-annotation--image {
+  position: relative;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.image-annotation--wrapper {
+  z-index: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+.image-annotation--wrapper.is-active {
+  padding-bottom: 110px;
+}
+
+.image-annotation--wrapper.is-active:after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: rgba(255,255,255,0.5);
+}
+
+
+.image-annotation--annotation {
+  z-index: 2;
+  height: 20px;
+  width: 20px;
+  display: block;
+  background: #0085ba;
+  border: 2px solid #DFE0EC;
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+.image-annotation--annotation:hover {
+  cursor: pointer;
+}
+
+.image-annotation--annotation.is-active {
+  position: relative;
+  z-index: 4;
+  opacity: 0.98;
+}
+
+.image-annotation--annotation.is-active + div {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.image-annotation-attach {
+  margin-bottom: 10px !important;
+}
+
+
+
+[contenteditable]:empty:before{
+  color: rgba(0,0,0,0.5);
+  content: attr(placeholder);
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.image-annotation--annotation--content {
+  display: none;
+  position: absolute !important;
+  left: 0 !important;
+  top: initial !important;
+  bottom: 0 !important;
+  z-index: 4;
+  height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 10px;
+  display: block;
+  background: white;
+  border: 1px solid #DFE0EC;
+  overflow: hidden;
+  overflow-y: scroll;
+  color: black;
+  resize: both;
+  opacity:0;
+  pointer-events: none;
+}
+
+.image-annotation--annotation--content--label--visibility--label,
+.image-annotation--annotation--content--label--visibility {
+  display: none !important;
+}
+
+
+.image-annotation--controls {
+  margin-top: 10px;
+}
+
+.image-annotation--controls--cancel {
+  height: 16px;
+  padding: 7px 10px;
+  display: inline-block;
+  line-height: 16px;
+  text-align: center;
+  color: black;
+}
+
+.image-annotation--controls--cancel:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+
+
+/*
+
+
+.image-annotation--controls {
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition-duration:0.2s;
+  z-index: 0;
+  position: absolute;
+  bottom: 269px;
+}
+
+.image-annotation--controls.is-active {
+  pointer-events: initial;
+  opacity: 1;
+  z-index: 4;
+}
+
+
+
+.has-value .image-annotation--image,
+.image-annotation--image.is-visible {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.column-left, .column-right {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.column-left {
+  padding-right: 20px;
+}
+
+.image-annotation--annotation--content--text,
+.image-annotation--annotation--content--label,
+.image-annotation--annotation--content--label--visibility,
+.image-annotation--annotation--content--label--visibility--label {
+  border: 1px solid rgba(0,0,0,0.5) !important;
+  margin-bottom: 10px;
+}
+
+.image-annotation--annotation--content--text {
+  min-height: 210px;
+  width: auto;
+  padding: 3px 5px;
+}
+
+
+
+.image-annotation--annotation--content--label--visibility--label {
+  border: 0px !important;
+  margin-bottom: 12px;
+  display: inline-block;
+  float: left;
+  max-width: 80%;
+}
+
+.image-annotation--annotation--content--label--visibility--label,
+.image-annotation--annotation--content--label--visibility {
+  margin-right: 5px;
+}
+
+.image-annotation--annotation--content--label {
+  margin-bottom: 10px !important;
+}
+
+ .image-annotation--annotation--content .image-annotation--controls--upload {
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+}
+
+
+
+.image-annotation--annotation.is-active .image-annotation--annotation--content--text,
+.image-annotation--annotation.is-active .image-annotation--annotation--content--label,
+.image-annotation--annotation.is-active .image-annotation--annotation--content--label--visibility,
+.image-annotation--annotation.is-active .image-annotation--annotation--content--label--visibility--label,
+.image-annotation--annotation.is-active .image-annotation--annotation--content--upload {
+  display: inline-block;
+}
+
+.image-annotation--annotation.is-active:hover {
+  cursor: initial;
+}
+
+tr.is-newly-added .acf-field .button {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+tr.is-newly-added .image-annotation--image {
+  float: left;
+}
+
+.save-notification {
+  float: right;
+  font-style: italic;
+  margin-top: 7px;
+}
+
+*/
