@@ -29,12 +29,13 @@
         // })
     };
     $.fn.addAnnotations = function(annotationCallback, annotations, options) {
-      console.log(annotations);
         // return this.each(function(){
             var container = this;
-            console.log('container ' + container);
             var containerHeight = $(container).height();
-            console.log(containerHeight);
+
+            var imageHi = $(this).parent().find('img');
+            var containerHeight = imageHi.get(0).height;
+
             var defaults = {
                 xPosition: 'middle',
                 yPosition: 'middle',

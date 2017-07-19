@@ -202,7 +202,6 @@ class acf_field_image_annotation extends acf_field {
 
 	}
 
-
 	/*
 	*  input_admin_head()
 	*
