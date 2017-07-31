@@ -302,5 +302,13 @@ console.log(annotations);
 		$('.image-annotation--annotations',$field).val(JSON.stringify(annotationsObjects));
 		console.log(annotationsObjects);
 	}
+	
+	$(window).resize(function() {
+		loadExistingAnnotations();
+	});
+
+	$(window).on('click', function(e) {
+		loadExistingAnnotations();
+	});	
 
 })(jQuery);
