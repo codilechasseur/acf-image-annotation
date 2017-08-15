@@ -1,7 +1,5 @@
 (function($){
-  function initialize_field( $el ) {
-
-    //$el.doStuff();
+  function initialize_field($el) {
     mediaUploader();
     annotateInit();
     editAnnotation();
@@ -11,7 +9,7 @@
     loadExistingAnnotations();
 
     // On append
-    acf.add_action('append', function( $el ){
+    acf.add_action('append', function($el) {
       annotateAppend();
       saveNotification($el);
     });
@@ -19,73 +17,25 @@
     $(window).resize(function() {
       loadExistingAnnotations();
     });
-
-    // acf.add_action('show_field', function( $field, context ){
-    //   loadExistingAnnotations();
-    // });
   }
 
-
   if( typeof acf.add_action !== 'undefined' ) {
-
-    /*
-    *  ready append (ACF5)
-    *
-    *  These are 2 events which are fired during the page load
-    *  ready = on page load similar to $(document).ready()
-    *  append = on new DOM elements appended via repeater field
-    *
-    *  @type	event
-    *  @date	20/07/13
-    *
-    *  @param	$el (jQuery selection) the jQuery element which contains the ACF fields
-    *  @return	n/a
-    */
-
     acf.add_action('load append', function( $el ){
       // search $el for fields of type 'image_annotation'
-      acf.get_fields({ type : 'image_annotation'}, $el).each(function(){
-        initialize_field( $(this) );
-      });
+      // acf.get_fields({ type : 'image_annotation'}, $el).each(function(){
+        initialize_field( $el );
+        // console.log($(this));
+      // });
     });
-
-    // acf.add_action('show_field', function( $field, context ){
-    //   loadExistingAnnotations();
-    // });
   } else {
-
-
-    /*
-    *  acf/setup_fields (ACF4)
-    *
-    *  This event is triggered when ACF adds any new elements to the DOM.
-    *
-    *  @type	function
-    *  @since	1.0.0
-    *  @date	01/01/12
-    *
-    *  @param	event		e: an event object. This can be ignored
-    *  @param	Element		postbox: An element which contains the new HTML
-    *
-    *  @return	n/a
-    */
-
     $(document).on('acf/setup_fields', function(e, postbox){
-
-      $(postbox).find('.field[data-field_type="image_annotation"]').each(function(){
-
-        initialize_field( $(this) );
-
+      $(postbox).find('.field[data-field_type="image_annotation"]').each(function() {
+        initialize_field($(this));
       });
-
     });
-
-
   }
 
   function mediaUploader() {
-    // console.log('here');
-
     var mediaUploader;
     var $mediaFieldKey = '';
 
@@ -96,7 +46,6 @@
 
       // Get id of the specific field
       $mediaFieldKey = $(this).closest('.image-annotation--image');
-      // console.log($mediaFieldKey);
 
       // If the uploader object has already been created, reopen the dialog
       if (mediaUploader) {
@@ -152,10 +101,9 @@
   }
 
   function annotateInit() {
-    // console.log('annotate init');
     // Initialize the annotated image script on each .annotated_image_wrapper element
     $('.image-annotation--image').each(function(i) {
-      $('.image-annotation--wrapper',this).annotatableImage(createAnnotation);
+      $('.image-annotation--wrapper', this).annotatableImage(createAnnotation);
     })
   }
 
@@ -164,7 +112,7 @@
     if (jQuery().annotatableImage) {
       $('.image-annotation--wrapper').off('annotatableImage');
     } else {
-      // $('.annotated_image_wrapper').annotatableImage(createAnnotation);
+      $('.image-annotation--wrapper').annotatableImage(createAnnotation);
     }
   }
 
@@ -227,26 +175,26 @@
       serializeMarkers($fieldKey);
 
       // Remove active class from wrapper and annotation
-      $('.image-annotation--wrapper, .image-annotation--controls',$fieldKey).removeClass('is-active').find('.image-annotation--annotation.is-active').removeClass('is-active is-fresh');
+      $('.image-annotation--wrapper, .image-annotation--controls', $fieldKey).removeClass('is-active').find('.image-annotation--annotation.is-active').removeClass('is-active is-fresh');
     })
   }
 
   function deleteAnnotation() {
-    // console.log('delete annotation');
+    console.log('delete annotation');
     // When the delete button is clicked:
-    $('.image-annotation--controls--delete').on('click',function() {
+    $('.image-annotation--controls--delete').on('click', function() {
 
       // Get the key of this specific field
       var $fieldKey = $(this).closest('.acf-field-image-annotation');
 
       // Remove the annotation content
-      $fieldKey.find('.image-annotation--image.is-active + .image-annotation--annotation--content').remove();
+      $fieldKey.find('.image-annotation--annotation.is-active + .image-annotation--annotation--content').remove();
 
       // Remove the annotation
-      $fieldKey.find('.image-annotation--image.is-active').remove();
+      $fieldKey.find('.image-annotation--annotation.is-active').remove();
 
       // Remove active class from wrapper and annotation (if annotation was not just added)
-      $('.image-annotation--wrapper, .image-annotation--controls',$fieldKey).removeClass('is-active').find('.image-annotation--image.is-active').removeClass('is-active');
+      $('.image-annotation--wrapper, .image-annotation--controls', $fieldKey).removeClass('is-active').find('.image-annotation--image.is-active').removeClass('is-active');
 
       // Serialize the annotation data and update record
       serializeMarkers($fieldKey);
@@ -293,9 +241,9 @@
       // var label = $('.annotated_image_annotation_label',target).val();
       // var checkedvalue = $('.annotated_image_annotation_label_visibility',target).attr('checked') ? 'checked' : '';
       var text = $('+ .image-annotation--annotation--content', target).find('.image-annotation--annotation--content--text').html();
-      console.log(text);
+      // console.log(text);
       var label = $('+ .image-annotation--annotation--content', target).find('.image-annotation--annotation--content--label').val();
-      console.log(label);
+      // console.log(label);
       var checkedvalue = $('+ .image-annotation--annotation--content', target).find('.image-annotation--annotation--content-visibility').attr('checked') ? 'checked' : '';
       annotationsObjects.push($.extend({}, annotations[index], {text: text, label: label, labelvisibility: checkedvalue }));
     })
