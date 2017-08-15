@@ -37,7 +37,7 @@ class acf_plugin_image_annotation {
 
 		// vars
 		$this->settings = array(
-			'version'	=> '1.0.0',
+			'version'	=> '1.0.3',
 			'url'		=> plugin_dir_url( __FILE__ ),
 			'path'		=> plugin_dir_path( __FILE__ )
 		);
