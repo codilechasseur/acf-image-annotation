@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Image Annotation
 Plugin URI: PLUGIN_URL
 Description: A plugin to provide image annotation support to ACF.
-Version: 1.0.2
+Version: 1.0.3
 Author: Codi Lechasseur
 Author URI: https://codilechasseur.com
 License: GPLv2 or later
